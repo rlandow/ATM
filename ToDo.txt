@@ -1,0 +1,10 @@
+Spcific
+
+Insufficient funds function - add
+Balance update function - add
+Timestamps - add to tables/code
+Account activiyt summary - add
+
+General
+Decide about streamining state maintenance
+Look more into use of eager vs lazy loading of data

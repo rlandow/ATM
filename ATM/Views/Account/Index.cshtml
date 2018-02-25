@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ATM.Models.Account>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.ActionLink("Deposit", "Index", "Transaction", new { Id = item.Id, Type = "D" }, null) |
+                @Html.ActionLink("Withdrawal", "Index", "Transaction", new { Id = item.Id, Type = "W" }, null) 
+                @(Model.Count() > 1 ? 
+                    @Html.ActionLink("| Transfer", "Index", "Transaction", new { Id = item.Id, Type = "T" }, null)  : MvcHtmlString.Create(""))
+
+
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+@using (Html.BeginForm("Index", "Home"))
+{
+ 
+    <button type="submit" class="btn btn-primary">Logout</button>
+}

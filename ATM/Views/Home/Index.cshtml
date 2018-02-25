@@ -1,0 +1,21 @@
+﻿@model ATM.Models.User
+
+@{
+    /**/
+
+    ViewBag.Title = "ATM";
+}
+
+<h1>ATM</h1>
+
+@using (Html.BeginForm("Login", "Home"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Pin)
+        @Html.TextBoxFor(m => m.Pin, new { @class = "form-control" })
+        @TempData["message"]
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+

@@ -1,0 +1,21 @@
+﻿@model ATM.Models.Transaction
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Deposit</h2>
+<h3>Account #: @Model.AccountId</h3>
+
+@using (Html.BeginForm("Deposit", "Transaction"))
+{
+    <div class="form-group">
+        @Html.LabelFor(t => t.Amount): 
+        @Html.TextBoxFor(t => t.Amount, new { @Value = "" } )
+
+    </div>
+    @Html.HiddenFor(t => t.AccountId)
+
+<button type="submit" class="btn btn-primary">Submit</button>
+@Html.ActionLink("Cancel","Index","Home",null, new { @class="clsButtonFake"})
+}

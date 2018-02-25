@@ -1,0 +1,30 @@
+﻿@model ATM.ViewModels.TransferTransactionViewModel
+
+@{
+    ViewBag.Title = "Transfer";
+}
+
+<h2>Transfer</h2>
+
+<h3>Account # @Model.Transaction.AccountId </h3>
+
+@using (Html.BeginForm("Transfer", "Transaction"))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Transaction.Amount)
+        @Html.TextBoxFor(m => m.Transaction.Amount, new { @class = "form-control", Value = "" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Transfer.TargetAccount)
+        @Html.DropDownListFor(m => m.Transfer.TargetAccount, new SelectList(Model.Accounts, "Id", "Id"), "Select Target Account", new { @class = "form-control" })
+    </div>
+
+    <p>@TempData["message"]</p>
+
+    @Html.HiddenFor(m => m.Transaction.AccountId)
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "clsButtonFake" })
+}
